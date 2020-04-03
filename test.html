@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://vjs.zencdn.net/7.7.5/video-js.css">
+    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+    <script src="https://vjs.zencdn.net/7.7.5/video.js"></script>
+    <script>
+        window.onload = function(){
+            var pushMeButton = document.getElementById('press_me');
+            function buttonListener(e){
+                alert('pressed' + e.target.value);
+            }
+            pushMeButton.addEventListener('click', buttonListener);
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <video
+            id="my-video"
+            class="video-js"
+            controls
+            preload="auto"
+            width="640"
+            height="264"
+            poster="MY_VIDEO_POSTER.jpg"
+            data-setup="{}">
+            <source src="MY_VIDEO.mp4" type="video/mp4" />
+            <source src="MY_VIDEO.webm" type="video/webm" />
+            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that
+                <a href="https://videojs.com/html5-video-support/" target="_blank"
+                >supports HTML5 video</a>
+            </p>
+        </video>
+    </div>
+    <input id="press_me" type="button" value="버튼이다">
+    </body>
+</html>
+
+<!-- <button class="vjs-play-control vjs-control vjs-button vjs-paused"
+type="button"
+title="Play"
+aria-disabled="false">
+    <span aria-hidden="true" class="vjs-icon-placeholder"></span>
+    <span class="vjs-control-text" aria-live="polite">Play</span>
+</button>
+<button class="vjs-play-control vjs-control vjs-button vjs-playing"
+type="button"
+title="Pause"
+aria-disabled="false">
+    <span aria-hidden="true" class="vjs-icon-placeholder"></span>
+    <span class="vjs-control-text" aria-live="polite">Pause</span>
+</button> -->
+
+<!-- video-js my-video-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-has-started vjs-paused vjs-user-inactive
+video-js my-video-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-has-started vjs-user-active vjs-playing
+video-js my-video-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-has-started vjs-playing vjs-user-active
+video-js my-video-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-has-started vjs-user-active vjs-paused -->
