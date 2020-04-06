@@ -11,52 +11,61 @@
     <script>
         window.onload = function(){
             var pushMeButton = document.getElementById('press_me');
+            var myPlayer1 = videojs('my-video1');
+            var myPlayer2 = videojs('my-video2');
+            console.log(myPlayer1);
             function buttonListener(e){
-                alert('pressed' + e.target.value);
+                if(e.target.value == "stop"){
+                    e.target.value = "start";
+                    myPlayer1.play();
+                    myPlayer2.play();
+                }else{
+                    e.target.value = "stop";
+                    myPlayer1.pause();
+                    myPlayer2.pause();
+                }
             }
             pushMeButton.addEventListener('click', buttonListener);
         }
     </script>
 </head>
-<body>
-    <div>
-        <video
-            id="my-video"
-            class="video-js"
-            controls
-            preload="auto"
-            width="640"
-            height="264"
-            poster="MY_VIDEO_POSTER.jpg"
-            data-setup="{}">
-            <source src="MY_VIDEO.mp4" type="video/mp4" />
-            <source src="MY_VIDEO.webm" type="video/webm" />
-            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that
-                <a href="https://videojs.com/html5-video-support/" target="_blank"
-                >supports HTML5 video</a>
-            </p>
-        </video>
-    </div>
-    <input id="press_me" type="button" value="버튼이다">
+    <body>
+        <div>
+            <video
+                id="my-video1"
+                class="video-js"
+                controls
+                preload="auto"
+                width="640"
+                height="264"
+                poster="MY_VIDEO_POSTER.jpg"
+                data-setup="{}">
+                <source src="MY_VIDEO.mp4" type="video/mp4" />
+                <source src="MY_VIDEO.webm" type="video/webm" />
+                <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that
+                    <a href="https://videojs.com/html5-video-support/" target="_blank"
+                    >supports HTML5 video</a>
+                </p>
+            </video>
+        </div>
+        <div>
+            <video
+                id="my-video2"
+                class="video-js"
+                controls
+                preload="auto"
+                width="640"
+                height="264"
+                poster="MY_VIDEO_POSTER.jpg"
+                data-setup="{}">
+                <source src="MY_VIDEO.mp4" type="video/mp4" />
+                <source src="MY_VIDEO.webm" type="video/webm" />
+                <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that
+                    <a href="https://videojs.com/html5-video-support/" target="_blank"
+                    >supports HTML5 video</a>
+                </p>
+            </video>
+        </div>
+        <input id="press_me" type="button" value="stop">
     </body>
 </html>
-
-<!-- <button class="vjs-play-control vjs-control vjs-button vjs-paused"
-type="button"
-title="Play"
-aria-disabled="false">
-    <span aria-hidden="true" class="vjs-icon-placeholder"></span>
-    <span class="vjs-control-text" aria-live="polite">Play</span>
-</button>
-<button class="vjs-play-control vjs-control vjs-button vjs-playing"
-type="button"
-title="Pause"
-aria-disabled="false">
-    <span aria-hidden="true" class="vjs-icon-placeholder"></span>
-    <span class="vjs-control-text" aria-live="polite">Pause</span>
-</button> -->
-
-<!-- video-js my-video-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-has-started vjs-paused vjs-user-inactive
-video-js my-video-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-has-started vjs-user-active vjs-playing
-video-js my-video-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-has-started vjs-playing vjs-user-active
-video-js my-video-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-has-started vjs-user-active vjs-paused -->
