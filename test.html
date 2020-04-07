@@ -11,21 +11,21 @@
     <script>
         window.onload = function(){
             var pushMeButton = document.getElementById('press_me');
-            var myPlayer1 = videojs('my-video1');
-            var myPlayer2 = videojs('my-video2');
-            console.log(myPlayer1);
+            var player1 = videojs('my-video1');
+            var player2 = videojs('my-video2');
             function buttonListener(e){
                 if(e.target.value == "stop"){
                     e.target.value = "start";
-                    myPlayer1.play();
-                    myPlayer2.play();
+                    player1.play();
+                    player2.play();
                 }else{
                     e.target.value = "stop";
-                    myPlayer1.pause();
-                    myPlayer2.pause();
+                    player1.pause();
+                    player2.pause();
                 }
             }
             pushMeButton.addEventListener('click', buttonListener);
+
         }
     </script>
 </head>
@@ -38,15 +38,16 @@
                 preload="auto"
                 width="640"
                 height="264"
-                poster="MY_VIDEO_POSTER.jpg"
                 data-setup="{}">
-                <source src="MY_VIDEO.mp4" type="video/mp4" />
-                <source src="MY_VIDEO.webm" type="video/webm" />
+                <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
                 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that
                     <a href="https://videojs.com/html5-video-support/" target="_blank"
                     >supports HTML5 video</a>
                 </p>
             </video>
+            Start: <input type="text" size="5" id="loopStart1" value="10" />
+            End:   <input type="text" size="5" id="loopEnd1"   value="15" />
+            Loop:  <input type="checkbox" checked="checked" id="loopEnabled1" />
         </div>
         <div>
             <video
@@ -56,16 +57,47 @@
                 preload="auto"
                 width="640"
                 height="264"
-                poster="MY_VIDEO_POSTER.jpg"
                 data-setup="{}">
-                <source src="MY_VIDEO.mp4" type="video/mp4" />
-                <source src="MY_VIDEO.webm" type="video/webm" />
+                <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
                 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that
                     <a href="https://videojs.com/html5-video-support/" target="_blank"
                     >supports HTML5 video</a>
                 </p>
             </video>
+            Start: <input type="text" size="5" id="loopStart2" value="10" />
+            End:   <input type="text" size="5" id="loopEnd2"   value="15" />
+            Loop:  <input type="checkbox" checked="checked" id="loopEnabled2" />
         </div>
         <input id="press_me" type="button" value="stop">
+
+        <script>
+            var player1 = document.getElementById("my-video1");
+            var player2 = document.getElementById("my-video2");
+            player1.addEventListener('timeupdate', timeupdate1, false);
+            player2.addEventListener('timeupdate', timeupdate2, false);
+
+            function timeupdate1() {
+                var loopStart1 = parseFloat(document.getElementById('loopStart1').value);
+                var loopEnd1 = parseFloat(document.getElementById('loopEnd1').value);
+                var loopEnabled1 = document.getElementById('loopEnabled1').checked;
+
+                if(loopEnabled1){
+                    if (player1.currentTime < loopStart1 || player1.currentTime >= loopEnd1 ) {
+                        player1.currentTime = loopStart1;
+                    }
+                }
+            }
+            function timeupdate2() {
+                var loopStart2 = parseFloat(document.getElementById('loopStart2').value);
+                var loopEnd2 = parseFloat(document.getElementById('loopEnd2').value);
+                var loopEnabled2 = document.getElementById('loopEnabled2').checked;
+
+                if(loopEnabled2){
+                    if (player2.currentTime < loopStart2 || player2.currentTime >= loopEnd2 ) {
+                        player2.currentTime = loopStart2;
+                    }
+                }
+            }
+        </script>
     </body>
 </html>
